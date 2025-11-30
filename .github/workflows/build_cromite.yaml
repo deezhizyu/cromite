@@ -256,7 +256,7 @@ jobs:
           # prepare keystore
           echo "::group::-------- prepare keystore"
           cd $WORKSPACE
-          echo "${{ secrets.KEYSTORE }}" > cromite.keystore.asc
+          printf "%s" "${{ secrets.KEYSTORE }}" > cromite.keystore.asc
           gpg --homedir ./ -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch cromite.keystore.asc > cromite.keystore
           echo "::endgroup::"
 
